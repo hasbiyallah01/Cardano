@@ -5,6 +5,7 @@ import {
   Script,
   TxSignBuilder,
 } from "@lucid-evolution/lucid";
+import { Int } from "effect/Schema";
 
 export type CborHex = string;
 export type RawHex = string;
@@ -73,6 +74,16 @@ export type InitPaymentConfig = {
   service_nft_tn: string;
   subscriber_nft_tn: string;
   subscription_start: bigint;
+};
+
+export type BatchConfig = {
+  productName: string;
+    batchId: string;
+    units: bigint;
+    ingredients: string[];
+    manufacturer: string;
+    productionDate: string;
+    expiryDate: string
 };
 
 export type ExtendPaymentConfig = {

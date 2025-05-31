@@ -136,3 +136,27 @@ export const SubscribeMintSchema = Data.Object({
 export type InitSubscription = Data.Static<typeof SubscribeMintSchema>;
 export const InitSubscription =
     SubscribeMintSchema as unknown as InitSubscription;
+
+
+    export const BatchDatumSchema = Data.Object({
+  productName: Data.Bytes(),
+  batchId: Data.Bytes(),
+  units: Data.Integer(),
+  ingredients: Data.Array(Data.Bytes()),
+  manufacturer: Data.Bytes(),
+  productionDate: Data.Bytes(), 
+  expiryDate: Data.Bytes()
+});
+export type BatchDatum = Data.Static<typeof BatchDatumSchema>;
+export const BatchDatum = BatchDatumSchema as unknown as BatchDatum;
+
+const sample1: BatchDatum = {
+    productName:  "TestProduct",
+    batchId: "BATCH001",
+    units: 20n,
+    ingredients : ["sugar", "salt"],
+    manufacturer: "Hasbiy Industries",
+    productionDate: "2025-05-30",
+    expiryDate :"2026-05-30"
+
+}

@@ -1,6 +1,8 @@
 import {
     initiateSubscription,
     InitPaymentConfig,
+    BatchConfig,
+    BatchDatum,
     LucidEvolution,
 } from "../index.js";
 import { makeLucidContext } from "./lucid.js";

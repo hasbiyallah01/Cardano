@@ -7,6 +7,9 @@ import {
     PROTOCOL_PARAMETERS_DEFAULT,
 } from "@lucid-evolution/lucid";
 import { Effect } from "effect";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export type LucidContext = {
     lucid: LucidEvolution;
@@ -102,7 +105,6 @@ export const makeLucidContext = (network?: Network) =>
             console.log("selectedNetwork", selectedNetwork);
             return yield* $(makeMaestroContext(selectedNetwork));
         } else {
-            // Use Emulator context
             console.log("selectedNetwork: Emulator");
             return yield* $(makeEmulatorContext());
         }

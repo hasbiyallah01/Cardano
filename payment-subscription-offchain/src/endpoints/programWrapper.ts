@@ -3,6 +3,7 @@
 import { Effect } from "effect";
 import { LucidEvolution, TxSignBuilder } from "@lucid-evolution/lucid";
 import {
+    BatchConfig,
     CreateAccountConfig,
     CreateServiceConfig,
     ExtendPaymentConfig,
@@ -23,6 +24,7 @@ import { createAccountProgram } from "./createAccount.js";
 import { updateAccountProgram } from "./updateAccount.js";
 import { removeAccountProgram } from "./removeAccount.js";
 import { initSubscriptionProgram } from "./initiateSubscription.js";
+import { BatchServiceProgram } from "./batchService.js";
 import { extendSubscriptionProgram } from "./extendSubscription.js";
 import { merchantWithdrawProgram } from "./merchantWithdraw.js";
 import { merchantPenaltyWithdrawProgram } from "./merchantPenaltyWithdraw.js";
@@ -89,6 +91,15 @@ export async function initiateSubscription(
 ): Promise<TxSignBuilder> {
     return Effect.runPromise(
         initSubscriptionProgram(lucid, config),
+    );
+}
+
+export async function BatchSub(
+    lucid: LucidEvolution,
+    config: BatchConfig,
+): Promise<TxSignBuilder> {
+    return Effect.runPromise(
+        BatchServiceProgram(lucid, config),
     );
 }
 
